@@ -42,6 +42,7 @@ function SingleBook() {
             />
             <div>{element.title}</div>
             <br />
+            <Link to={`/edit-book/${element.slug}`}>✏️Edit</Link>
           </div>
           <div className="col-2">
             <h1>{element.title}</h1>
