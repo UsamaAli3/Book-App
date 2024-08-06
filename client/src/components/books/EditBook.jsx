@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import NoImageSelected from "../../assets/no-image-selected.jpg";
 import { useNavigate, useParams } from "react-router-dom";
+import { VITE_BACKEND } from "../../App";
 
 function EditBook() {
   const urlSlug = useParams();
   const navigate = useNavigate();
 
-  const baseUrl = `http://localhost:8000/api/books/${urlSlug.slug}`;
+  const baseUrl = `${VITE_BACKEND}/api/books/${urlSlug.slug}`;
   console.log(baseUrl);
   const [bookId, setBookId] = useState("");
   const [title, setTitle] = useState("");
@@ -68,7 +69,7 @@ function EditBook() {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/books", {
+      const response = await fetch(`${VITE_BACKEND}/api/books`, {
         method: "PUT",
         body: formData,
       });
@@ -102,7 +103,7 @@ function EditBook() {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/books", {
+      const response = await fetch(`${VITE_BACKEND}/api/books`, {
         method: "PUT",
         body: formData,
       });
@@ -136,7 +137,7 @@ function EditBook() {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:8000/api/books/" + bookId,
+        `${VITE_BACKEND}/api/books${bookId}`,
         {
           method: "DELETE",
         }

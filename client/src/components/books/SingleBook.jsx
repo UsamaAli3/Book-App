@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { VITE_BACKEND } from "../../App";
 
 function SingleBook() {
   const [data, setData] = useState([]);
 
   const { slug } = useParams();
 
-  const baseDataUrl = `http://localhost:8000/api/books/${slug}`;
+  const baseDataUrl = `${VITE_BACKEND}/api/books/${slug}`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +38,7 @@ function SingleBook() {
         <div className="bookdetails " key={element._id}>
           <div className="col-1">
             <img
-              src={`http://localhost:8000/uploads/${element.thumbnail}`}
+              src={`${VITE_BACKEND}/uploads/${element.thumbnail}`}
               alt={element.title}
             />
             <div>{element.title}</div>

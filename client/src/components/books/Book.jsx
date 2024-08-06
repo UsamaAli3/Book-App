@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { VITE_BACKEND } from "../../App";
 
 function Book() {
-  const baseDataUrl = "http://localhost:8000/api/books";
+  const baseDataUrl = `${VITE_BACKEND}/api/books`;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -57,7 +58,7 @@ function Book() {
             <li key={item._id}>
               <Link to={`/books/${item.slug}`}>
                 <img
-                  src={`http://localhost:8000/uploads/${item.thumbnail}`}
+                  src={`${VITE_BACKEND}/uploads/${item.thumbnail}`}
                   alt={item.title}
                 />
                 <h1>{item.title}</h1>

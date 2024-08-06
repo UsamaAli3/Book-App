@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import NoImageSelected from "../../assets/no-image-selected.jpg";
+import { VITE_BACKEND } from "../../App";
 
 function CreateBook() {
+  console.log(VITE_BACKEND);
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [stars, setStar] = useState("");
@@ -25,7 +27,7 @@ function CreateBook() {
     console.log(formData);
 
     try {
-      const response = await fetch("http://localhost:8000/api/books", {
+      const response = await fetch(`${VITE_BACKEND}/api/books`, {
         method: "POST",
         body: formData,
       });
@@ -72,51 +74,47 @@ function CreateBook() {
                 onChange={imageChangeHandler}
               />
             </div>
+          </div>
+          <div className="col-2">
+            <div>
+              <label>Title</label>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
             </div>
-            <div className="col-2">
-          <div>
-            <label>Title</label>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
+            <div>
+              <label>Slug</label>
+              <input
+                type="text"
+                value={slug}
+                onChange={(e) => setSlug(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Stars</label>
+              <input
+                type="text"
+                value={stars}
+                onChange={(e) => setStar(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Description</label>
+              <textarea
+                rows="4"
+                cols="50"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Categories (Comma-Separated)</label>
+              <input type="test" value={category} onChange={categoryHandle} />
+            </div>
+            <input type="submit" value="Add Book" />
           </div>
-          <div>
-            <label>Slug</label>
-            <input
-              type="text"
-              value={slug}
-              onChange={(e) => setSlug(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Stars</label>
-            <input
-              type="text"
-              value={stars}
-              onChange={(e) => setStar(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Description</label>
-            <textarea
-              rows="4"
-              cols="50"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Categories (Comma-Separated)</label>
-            <input
-              type="test"
-              value={category}
-              onChange={categoryHandle}
-            />
-          </div>
-          <input type="submit" value="Add Book" />
-        </div>
         </form>
       )}
     </>

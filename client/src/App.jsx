@@ -8,8 +8,10 @@ import Footer from "./components/Footer";
 import SingleBook from "./components/books/SingleBook";
 import CreateBook from "./components/books/CreateBook";
 import EditBook from "./components/books/EditBook";
+export const VITE_BACKEND = import.meta.env.VITE_BACKEND_URL;
 
 function App() {
+  console.log(VITE_BACKEND);
   return (
     <BrowserRouter>
       <Header />
