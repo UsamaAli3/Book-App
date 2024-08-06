@@ -136,12 +136,9 @@ function EditBook() {
   const removeBook = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        `${VITE_BACKEND}/api/books${bookId}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`${VITE_BACKEND}/api/books/${bookId}`, {
+        method: "DELETE",
+      });
       if (response.ok) {
         navigate("/books");
         console.log("Delete book successfully!");
